@@ -1,6 +1,6 @@
 {
   "name": "tele2-cdr",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This package allows to process Tele 2 Call Directory records based on Mobile Station International Subscriber Directory Number or International Mobile Subscriber Identity",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
