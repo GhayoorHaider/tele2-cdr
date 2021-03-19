@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Versions under 1.0 are not able and were only meant for testing purpose
+Versions under 1.0 are not stable and were only meant for testing purpose
 
 | Version | Supported          |
 | ------- | ------------------ |
