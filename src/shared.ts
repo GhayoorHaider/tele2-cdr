@@ -9,10 +9,21 @@ export const shouldChargeCall = (callRecord: any): boolean => {
     (!callRecord.B_PARTY_NUMBER.startsWith('46') &&
       !callRecord.B_PARTY_NUMBER.startsWith('0046'))
   ) {
-    if (!isCallNumber(callRecord.B_PARTY_NUMBER)) {
-      return callRecord.B_PARTY_NUMBER.length > 10;
+    // if (!isCallNumber(callRecord.B_PARTY_NUMBER)) {
+    //   return callRecord.B_PARTY_NUMBER.length > 10;
+    // }
+    // return !isEmergencyNumber(callRecord.B_PARTY_NUMBER);
+    if ( !isCallNumber( callRecord.B_PARTY_NUMBER ) ) {
+      if ( callRecord.B_PARTY_NUMBER.length > 10 && !callRecord.B_PARTY_NUMBER.startsWith( '07' )){
+        return true;
+      }
+      return false;
+    } else if ( isEmergencyNumber( callRecord.B_PARTY_NUMBER ) ) {
+      return false;
     }
-    return !isEmergencyNumber(callRecord.B_PARTY_NUMBER);
+    else {
+      return true;
+    }
   }
   else {
     return false;
@@ -38,14 +49,14 @@ const isSmsNumber = (number: string): boolean => {
   let startingValue: number = subStringValue(number)
 
   let a = smsNumbers.find(x => number.substring(startingValue, 2) === x || number.substring(startingValue, 3) === x || number.substring(startingValue, 4) === x || number.substring(startingValue, 5) === x);
-  return typeof a === 'undefined'
+  return typeof a === 'undefined' ? false : true
 }
 
 const isEmergencyNumber = (number: string): boolean => {
   let startingValue: number = subStringValue(number)
 
   let a = emergencyNumbers.find(x => number.substring(startingValue, 2) === x || number.substring(startingValue, 3) === x || number.substring(startingValue, 4) === x || number.substring(startingValue, 5) === x);
-  return typeof a === 'undefined'
+  return typeof a === 'undefined' ? false : true
 }
 
 
