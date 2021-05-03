@@ -116,7 +116,7 @@ export const groupDataByData = (roamingData: Array<any>, limitData: number): num
     let items: Array<any> = group[key];
     if (items && items.length) {
       items.forEach(item => {
-        let isEuropenData: boolean = item.type == 'GGSN' ? europeCodes.includes(item.NODE_ID) : europeCodes.includes(item.PLMN_SENDER);
+        let isEuropenData: boolean = typeof item.PLMN_SENDER !== 'undefined' ? europeCodes.includes(item.PLMN_SENDER) : europeCodes.includes(item.NODE_ID);
         let dataExceed: boolean = totalIntGGSN > limitData;
         if (isEuropenData == true && dataExceed == false) {
           item.CHARGE_EXCL_VAT = 0;
